@@ -1,0 +1,8 @@
+def matchingStrings(strings, queries):
+    results=[0]*len(queries)
+    for query_index in range(0,len(queries)):
+        for string in strings:
+            if queries[query_index] == string:
+                results[query_index]+=1
+                
+    return results
