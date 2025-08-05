@@ -1,0 +1,12 @@
+def twoArrays(k, A, B):
+    B.sort()
+    for num1 in A:
+        working = False
+        for num2 in B:
+            if num1 + num2 >= k:
+                working = True
+                B.remove(num2)
+                break
+        if not working:
+            return "NO"
+    return "YES"
