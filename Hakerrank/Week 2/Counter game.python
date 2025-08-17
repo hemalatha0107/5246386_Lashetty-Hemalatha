@@ -1,0 +1,11 @@
+def counterGame(n):
+    turns = 0
+    while n > 1:
+        power = 1 << (n.bit_length() - 1) 
+        if n == power:
+            n >>=1 
+        else: 
+            n -= power
+        turns += 1
+           
+    return "Louise" if turns %2 != 0 else "Richard"
