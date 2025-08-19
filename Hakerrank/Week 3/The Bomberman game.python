@@ -1,0 +1,26 @@
+def bomberMan(n, grid):
+    if n == 1:
+        return grid
+    
+    if n % 2 == 0:
+        return ['O'*c for i in range(r)]
+
+    def detonate_bombs(grid):
+        new_grid = [['O']*c for i in range(r)]
+        
+        for i in range(r):
+            for j in range(c):
+                if grid[i][j] == 'O':
+                    new_grid[i][j] = '.'
+                    for x, y in [(i-1, j), (i+1, j), (i, j-1), (i, j+1)]:
+                        if 0<=x<r and 0<=y<c:
+                            new_grid[x][y] = '.'
+                            
+        return [''.join(row) for row in new_grid]
+    
+    n //= 2
+    for _ in range((n + 1) % 2 + 1):
+        new_grid = detonate_bombs(grid)
+        grid = new_grid
+        
+    return [''.join(row) for row in grid]
